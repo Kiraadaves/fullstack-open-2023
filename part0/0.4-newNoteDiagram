@@ -1,0 +1,7 @@
+```mermaid
+New Diagram;
+	Browser-->Server;
+	Browser-->Server;
+	Server->>Browser: testing
+	Server-->>Browser: another
+```
