@@ -1,14 +1,10 @@
-
-const Persons = ({showFilter}) => {
-    return (
-      <ul>
-        {showFilter.map((person) => (
-          <li key={person.name}>
-            {person.name} {person.phone}
-          </li>
-        ))}
-      </ul>
-    );
+import Button from "./Button";
+const Persons = ({ person, deleteNote }) => {
+  return (
+    <li>
+      {person.name} {person.number} <Button deleteNote={deleteNote}/>
+    </li>
+  );
 };
 
 export default Persons;
