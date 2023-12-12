@@ -101,17 +101,24 @@ const App = () => {
             setNotificationMessage(null);
           }, 5000);
         })
-        .catch(() => {
-          setNotificationMessage(`Error adding ${newName}`);
-          setTimeout(() => {
-            setNotificationMessage(null);
-          }, 5000);
+        .catch((error) => {
+          if (
+            error.response &&
+            error.response.data &&
+            error.response.data.error
+          ) {
+            setNotificationMessage(
+              `Error addiiing ${newName}: ${error.response.data.error}`
+            );
+            setTimeout(() => {
+              setNotificationMessage(null);
+            }, 5000);
+          }
         });
     }
   };
 
   const deleteNote = (id, name) => {
-    console.log(id);
     const confirm = window.confirm(`Delete ${name} ?`);
     if (confirm) {
       noteService.remove(id).then(() => {
